@@ -8,7 +8,7 @@ class Program
         string inGradePerc = Console.ReadLine();
         int valueGradePerc = int.Parse(inGradePerc);
         string letterGrade;
-        string gradeSuffix;
+        // string gradeSuffix;
         if (valueGradePerc >= 0 && valueGradePerc <= 100)
         {
             if (valueGradePerc >= 70)

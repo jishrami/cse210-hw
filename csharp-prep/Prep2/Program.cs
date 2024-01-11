@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 
 class Program
 {
@@ -9,11 +10,12 @@ class Program
         int valueGradePerc = int.Parse(inGradePerc);
         string letterGrade;
         string gradeSuffix;
+        string pass;
         if (valueGradePerc >= 0 && valueGradePerc <= 100)
         {
             if (valueGradePerc >= 70)
             {
-                Console.WriteLine("You passed!");
+                pass = "You passed!";
                 if (valueGradePerc < 80)
                 {
                     letterGrade = "C";
@@ -29,7 +31,7 @@ class Program
             }
             else
             {
-                Console.WriteLine("You did not pass. Try again!");
+                pass = "You did not pass. Try again!";
                 if (valueGradePerc >= 60)
                 {
                     letterGrade = "D";
@@ -52,6 +54,7 @@ class Program
                 gradeSuffix = "";
             }
             Console.WriteLine($"Your letter grade is {letterGrade}{gradeSuffix}");
+            Console.WriteLine(pass);
         }
         else 
         {

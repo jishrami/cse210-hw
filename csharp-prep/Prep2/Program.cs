@@ -43,7 +43,7 @@ class Program
             {
                 gradeSuffix = "+";
             }
-            else if (valueGradePerc % 10 <= 3 && letterGrade != "F")
+            else if (valueGradePerc % 10 <= 3 && letterGrade != "F" && valueGradePerc != 100)
             {
                 gradeSuffix = "-";
             }
@@ -52,6 +52,10 @@ class Program
                 gradeSuffix = "";
             }
             Console.WriteLine($"Your letter grade is {letterGrade}{gradeSuffix}");
+        }
+        else 
+        {
+            Console.Write("Please input a grade percentage between 0-100");
         }
     }
 }

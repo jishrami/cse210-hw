@@ -8,7 +8,7 @@ class Program
         string inGradePerc = Console.ReadLine();
         int valueGradePerc = int.Parse(inGradePerc);
         string letterGrade;
-        // string gradeSuffix;
+        string gradeSuffix;
         if (valueGradePerc >= 0 && valueGradePerc <= 100)
         {
             if (valueGradePerc >= 70)
@@ -39,8 +39,19 @@ class Program
                     letterGrade = "F";
                 }
             }
-            
-            Console.WriteLine($"Your letter grade is {letterGrade}");
+            if (valueGradePerc % 10 >= 7 && letterGrade != "A" && letterGrade != "F")
+            {
+                gradeSuffix = "+";
+            }
+            else if (valueGradePerc % 10 <= 3 && letterGrade != "F")
+            {
+                gradeSuffix = "-";
+            }
+            else
+            {
+                gradeSuffix = "";
+            }
+            Console.WriteLine($"Your letter grade is {letterGrade}{gradeSuffix}");
         }
     }
 }

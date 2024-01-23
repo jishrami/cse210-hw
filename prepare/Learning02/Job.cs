@@ -4,10 +4,10 @@ public class Job {
     public string _dateHired;
     public string _dateLeft;
 
-    // public string DisplayJob()
-    // {
-
-    //     return 
-    // }
+    public void Display()
+    {
+        Console.WriteLine($"{_jobTitle} ({_companyName}) {_dateHired}-{_dateLeft}");
+        
+    }
 }
 

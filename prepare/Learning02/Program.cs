@@ -10,6 +10,18 @@ class Program
         job1._dateHired = "2024";
         job1._dateLeft = "Present";
 
-        Console.WriteLine($"{job1._jobTitle} ({job1._companyName}) {job1._dateHired}-{job1._dateLeft}");
+        Job job2 = new Job();
+        job2._jobTitle = "Project Manager";
+        job2._companyName = "Hewlett Packard ";
+        job2._dateHired = "2019";
+        job2._dateLeft = "2024";
+
+        Resume person1 = new Resume();
+        person1._employeeName = "Adam Jacobs";
+
+        person1._jobs.Add(job1);
+        person1._jobs.Add(job2);
+
+        person1.Display();
     }
 }

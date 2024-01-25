@@ -1,6 +1,3 @@
-using System.Reflection.Metadata;
-namespace Develop02;
-
 class Journal
 {
     public void DisplayJournal(List<Entries> entries)

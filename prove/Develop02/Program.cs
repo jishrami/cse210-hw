@@ -44,7 +44,7 @@ class Program
                 // Load
                 Console.WriteLine("What is the file name?");
                 string fileName = Console.ReadLine();
-                string[] lines = System.IO.File.ReadAllLines(fileName);
+                string[] lines = System.IO.File.ReadAllLines($"{fileName}.txt");
 
                 foreach (string line in lines)
                 {
@@ -64,13 +64,23 @@ class Program
             else if (userInput == 4)
             {
                 // Save
-                Console.WriteLine("What is the file name?");
+                Console.WriteLine("What is the file name? (Not the file type!)");
                 string fileName = Console.ReadLine();
-                using (StreamWriter outputFile = new StreamWriter(fileName))
+                using (StreamWriter outputFile = new StreamWriter($"{fileName}.txt"))
                 {
                     foreach (Entries entry in journalEntries)
                     {
                         outputFile.WriteLine($"{entry._date}:{entry._prompt}:{entry._input}");
+                    }
+                }
+                using (StreamWriter csvFile = new StreamWriter($"{fileName}.csv"))
+                {
+                    csvFile.WriteLine("Date,Prompt,Entry");
+                    foreach (Entries entry in journalEntries)
+                    {
+                        string formattedPrompt = $"\"{entry._prompt}\"";
+                        string formattedInput = $"\"{entry._input}\"";
+                        csvFile.WriteLine($"{entry._date},{formattedPrompt},{formattedInput}");
                     }
                 }
             }

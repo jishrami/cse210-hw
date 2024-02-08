@@ -28,7 +28,6 @@ class Fraction
 
     public double GetDecimalValue ()
     {
-        double fraction = (double)_topNumber / _bottomNumber;
-        return fraction;
+        return (double)_topNumber / _bottomNumber;
     }
 }

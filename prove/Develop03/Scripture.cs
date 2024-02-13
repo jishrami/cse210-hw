@@ -16,7 +16,7 @@ class Scripture
 
     public string GetRenderedText()
     {
-        //returns the reference and the words
+        //returns the formatted rendered text
         string renderedText = "";
         foreach (Word word in _words)
         {

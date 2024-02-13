@@ -22,7 +22,7 @@ class Program
         //creates a new list in Word by separating the words into individual strings
         List<Word> words = calledScripture.GetWords();
 
-        //checks to see if any words are not hidden, if they are, it will hide a word, if not, it will quit
+        //checks to see if any words are not hidden, if they are, it will randomly hide a word, if not, it will quit
         while (AnyNotHidden(words))
         {
             foreach (Word word in words)

@@ -15,8 +15,8 @@ class Program
 
         //initial clear and print
         Console.Clear();
-        Console.WriteLine("Type 'quit' to exit the program.");
         Console.WriteLine(calledScripture.GetRenderedText());
+        Console.WriteLine("Type 'quit' to exit the program.");
         Console.ReadLine();
 
         //creates a new list in Word by separating the words into individual strings
@@ -39,10 +39,12 @@ class Program
 
             Console.Clear();
             Console.WriteLine(calledScripture.GetRenderedText());
+            Console.WriteLine("Type 'quit' to exit the program.");
             string input = Console.ReadLine();
 
             if (input.ToLower() == "quit")
             {
+                Console.Clear();
                 break;
             }
         }

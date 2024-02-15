@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 class Program
 {
     static void Main(string[] args)
@@ -27,6 +28,7 @@ class Program
         {
             foreach (Word word in words)
             {
+                //if the word is not hidden, it will randomly choose to hide it or not
                 if (!word.IsHidden())
                 {
                     Random random = new Random();
@@ -48,6 +50,7 @@ class Program
                 break;
             }
         }
+        Console.Clear();
     }
 
     //calls Word to see if any words are not hidden. Returns true if there are any not hidden

@@ -5,7 +5,7 @@ class Scripture
 
     public Scripture(Reference reference, string scripture)
     {
-        //splits the string into an array of words and creates a new Word object for each word
+        //splits the string into an array of words and creates a new Word object for each word in the scripture
         string[] wordArray = scripture.Split(' ');
         foreach (string word in wordArray)
         {

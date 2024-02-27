@@ -9,7 +9,7 @@ class BreathingActivity : Activity
 
     public void displayBreathing()
     {
-        int inTime = _breathingTime / 3;
+        int inTime = _breathingTime / 4;
         int outTime = (int)(inTime * 1.5);
 
         for (int i = 0; i < 4; i++)

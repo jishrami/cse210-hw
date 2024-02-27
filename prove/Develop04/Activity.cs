@@ -8,6 +8,14 @@ class Activity {
         _activityDescription = description;
     }
 
+    public Activity(string name, string description, int duration) {
+        _activityName = name;
+        _activityDescription = description;
+        _activityDuration = duration;
+    }
+
+
+
     public string GetActivityName() {
         return _activityName;
     }

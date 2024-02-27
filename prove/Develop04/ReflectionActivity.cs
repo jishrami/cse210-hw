@@ -33,7 +33,6 @@ class ReflectionActivity : Activity
         Thread.Sleep(3000);
     }
 
-
     public string GetRandomQuestion()
     {
         List<string> questions = new List<string>
@@ -54,5 +53,6 @@ class ReflectionActivity : Activity
     public void DisplayQuestion()
     {
         Console.WriteLine(_question);
+        Thread.Sleep(3000);
     }
 }

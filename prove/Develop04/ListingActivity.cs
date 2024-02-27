@@ -1,6 +1,7 @@
 class ListingActivity : Activity
 {
     private string _prompt;
+    private int _duration;
     private int _items;
     List<string> _prompts = new List<string>{
     "Who are people that you appreciate?",
@@ -10,8 +11,9 @@ class ListingActivity : Activity
     "Who are some of your personal heroes?"};
     List<string> itemsList = new List<string>();
 
-    public ListingActivity(string name, string description, string prompt) : base(name, description)
+    public ListingActivity(string name, string description, int duration) : base(name, description, duration)
     {
+        string prompt = GetPrompt();
         _prompt = prompt;
     }
 
@@ -26,13 +28,23 @@ class ListingActivity : Activity
 
     public int DisplayNumberItems()
     {
+        _items = itemsList.Count();
+        return _items;
+    }
+
+    public void DisplayActivity()
+    {
+
         Console.WriteLine($"{_prompt}");
-        while (itemsList.Count() < 4) //TODO change to be timed
+        Thread.Sleep(3000);
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(_duration);
+        while (DateTime.Now < endTime)
         {
-        string item = Console.ReadLine();
-        itemsList.Add(item);
+            string item = Console.ReadLine();
+            itemsList.Add(item);
         }
-        return itemsList.Count();
+
     }
 
 }

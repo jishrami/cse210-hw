@@ -44,6 +44,9 @@ class Program
 
                     Console.WriteLine("Well Done!");
                     activity1.ShowSpinner();
+                    
+                    Console.Clear();
+                    
                     Console.WriteLine(activity1.DisplayEndMessage());
                     activity1.ShowSpinner();
 
@@ -73,6 +76,9 @@ class Program
 
                     Console.WriteLine("Well Done!");
                     activity2.ShowSpinner();
+
+                    Console.Clear();
+
                     Console.WriteLine(activity2.DisplayEndMessage());
                     activity2.ShowSpinner();
 
@@ -102,6 +108,9 @@ class Program
 
                     Console.WriteLine("Well Done!");
                     activity3.ShowSpinner();
+
+                    Console.Clear();
+
                     Console.WriteLine(activity3.DisplayEndMessage());
                     activity3.ShowSpinner();
 

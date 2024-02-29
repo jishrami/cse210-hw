@@ -9,27 +9,29 @@ class BreathingActivity : Activity
 
     public void displayBreathing()
     {
-        int inTime = _breathingTime / 4;
-        int outTime = (int)(inTime * 1.5);
+        int inDuration = 5; // Each interval lasts for 5 seconds
+        int outDuration = (int)Math.Round(inDuration * 1.1);
+        DateTime endTime = DateTime.Now.AddSeconds(_breathingTime);
 
-        for (int i = 0; i < 4; i++)
+        do
         {
-            Console.Write($"Now breathing in for {inTime} seconds");
-            for (int j = 0; j < inTime; j++)
+            Console.Write($"Now breathing in for {inDuration} seconds");
+            for (int j = 0; j < inDuration; j++)
             {
                 Console.Write(".");
                 Thread.Sleep(1000); // 1 second
             }
             Console.WriteLine();
 
-            Console.Write($"Now breathing out for {outTime} seconds");
-            for (int j = 0; j < outTime; j++)
+            Console.Write($"Now breathing out for {outDuration} seconds");
+            for (int j = 0; j < outDuration; j++)
             {
                 Console.Write(".");
                 Thread.Sleep(1000); // 1 second
             }
-            outTime++;
             Console.WriteLine();
-        }
+
+        } while (DateTime.Now < endTime);
     }
+
 }

@@ -9,7 +9,7 @@ class Activity
         _activityName = name;
         _activityDescription = description;
     }
-    
+
     public Activity(string name, string description, int duration)
     {
         _activityName = name;
@@ -30,7 +30,14 @@ class Activity
 
     public string DisplayEndMessage()
     {
-        return $"You have completed another {_activityDuration} seconds of the {_activityName}!";
+        if (_activityDuration == 1)
+        {
+            return $"You have completed another {_activityDuration} second of the {_activityName}!";
+        }
+        else
+        {
+            return $"You have completed another {_activityDuration} seconds of the {_activityName}!";
+        }
     }
 
 

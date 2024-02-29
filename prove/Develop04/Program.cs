@@ -37,7 +37,7 @@ class Program
 
                     Console.WriteLine("Ready...");
                     activity1.ShowSpinner();
-                    
+
                     Console.Clear();
 
                     breathingActivity.displayBreathing();
@@ -45,7 +45,7 @@ class Program
 
                     Console.WriteLine("Well Done!");
                     activity1.ShowSpinner();
-                    
+
                     Console.Clear();
 
                     Console.WriteLine(activity1.DisplayEndMessage());

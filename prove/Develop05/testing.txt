@@ -1,0 +1,2 @@
+totalPoints
+Checklist Goal,Checklist,Checklist goals,10

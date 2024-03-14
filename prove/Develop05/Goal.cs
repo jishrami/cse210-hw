@@ -39,7 +39,16 @@ abstract class Goal
             outputFile.WriteLine($"totalPoints");
             foreach (Goal goal in goals)
             {
-                outputFile.WriteLine($"{goal._goalType},{goal._goalName},{goal._goalDescription},{goal._points}");
+                if (goal.GetType() == typeof(ChecklistGoal))
+                {
+                    ChecklistGoal checklistGoal = (ChecklistGoal)goal;
+                    outputFile.WriteLine($"{goal._goalType},{goal._goalName},{goal._goalDescription},{goal._points},{checklistGoal.BonusPoints}");
+                }
+                else
+                {
+
+                    outputFile.WriteLine($"{goal._goalType},{goal._goalName},{goal._goalDescription},{goal._points}");
+                }
             }
         }
     }

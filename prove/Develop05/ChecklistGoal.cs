@@ -5,6 +5,8 @@ class ChecklistGoal : Goal
     private int _timesToAccomplish;
     private int _bonusPoints;
 
+    public int BonusPoints => _bonusPoints; // Protected property to access _bonusPoints
+
     public ChecklistGoal(string type, string name, string description, int point, int timesToAccomplish, int bonusPoints) : base(type, name, description, point)
     {
         _timesToAccomplish = timesToAccomplish;
@@ -26,7 +28,6 @@ class ChecklistGoal : Goal
         ChecklistGoal checklistGoal = new ChecklistGoal("Checklist Goal", checkName, checkDescription, checkPoints, checkTime, checkBonus);
         goals.Add(checklistGoal);
     }
-
 
     public override void RecordEvent(List<Goal> goals)
     {

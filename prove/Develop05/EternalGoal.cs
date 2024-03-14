@@ -17,5 +17,10 @@ class EternalGoal : Goal
         goals.Add(eternalGoal);
     }
 
+    public override void RecordEvent(List<Goal> goals)
+    {
+        
+    }
+
 
 }

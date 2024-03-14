@@ -1,2 +1,4 @@
 totalPoints
 Eternal Goal,Go to church every sunday,Go to church,50
+Simple Goal,Homework,finish homework before the end of the week,25
+Checklist Goal,Programming tasks,finish all the programming tasks,10,3,40

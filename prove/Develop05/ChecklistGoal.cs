@@ -28,7 +28,7 @@ class ChecklistGoal : Goal
     }
 
 
-    public override void RecordEvent()
+    public override void RecordEvent(List<Goal> goals)
     {
 
     }

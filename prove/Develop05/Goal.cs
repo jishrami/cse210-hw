@@ -7,6 +7,8 @@ abstract class Goal
     protected string _goalDescription;
     protected int _points;
 
+    protected int _totalPoints = 0;
+
     public Goal(string goalType, string goalName, string goalDescription, int points)
     {
         _goalType = goalType;
@@ -86,8 +88,5 @@ abstract class Goal
         }
     }
 
-    public virtual void RecordEvent()
-    {
-
-    }
+    public abstract void RecordEvent(List<Goal> goals);
 }

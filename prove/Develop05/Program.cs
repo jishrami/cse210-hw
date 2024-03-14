@@ -6,6 +6,8 @@ class Program
     {
         int userChoice = 0;
         List<Goal> goals = new List<Goal>();
+        int initialLength = goals.Count();
+
 
         Console.Clear();
         while (userChoice != 6)
@@ -24,16 +26,16 @@ class Program
                     switch (goalChoice)
                     {
                         case 1:
-                            SimpleGoal simpleGoal = new SimpleGoal("","","",0);
+                            SimpleGoal simpleGoal = new SimpleGoal("", "", "", 0);
                             simpleGoal.CreateNewGoal(goals);
                             break;
                         case 2:
-                            EternalGoal eternalGoal = new EternalGoal("","","",0);
+                            EternalGoal eternalGoal = new EternalGoal("", "", "", 0);
                             eternalGoal.CreateNewGoal(goals);
                             break;
                         case 3:
-                           ChecklistGoal checklistGoal = new ChecklistGoal("","","",0,0,0);
-                           checklistGoal.CreateNewGoal(goals);
+                            ChecklistGoal checklistGoal = new ChecklistGoal("", "", "", 0, 0, 0);
+                            checklistGoal.CreateNewGoal(goals);
                             break;
                         default:
                             Console.WriteLine("That is not a valid choice.");
@@ -50,16 +52,30 @@ class Program
                     break;
                 case 4: //load goals
                     Goal.LoadGoal(goals);
+                    initialLength = goals.Count();
                     Console.Clear();
                     break;
                 case 5: //record event
                     Console.Clear();
+                    // Goal.RecordEvent(goals);
                     break;
                 case 6: //exit
                     Console.Clear();
-                    break;
-                default:
-                    Console.WriteLine("Please enter a valid choice");
+                    int finalLength = goals.Count();
+                    if (initialLength != finalLength)
+                    {
+                        Console.WriteLine("Would you like to save your changes? (y/n)");
+                        string saveChoice = Console.ReadLine();
+
+                        switch (saveChoice.ToLower())
+                        {
+                            case "y":
+                                Goal.SaveGoal(goals);
+                                break;
+                            case "n":
+                                break;
+                        }
+                    }
                     break;
             }
         }

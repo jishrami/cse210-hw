@@ -6,12 +6,16 @@ class Program
     {
         int userChoice = 0;
         List<Goal> goals = new List<Goal>();
+        int totalPoints = 0;
         int initialLength = goals.Count();
+        int initialPoints = 0;
 
 
         Console.Clear();
         while (userChoice != 6)
         {
+            Console.WriteLine($"You currently have {totalPoints} points.");
+            Console.WriteLine();
             Console.WriteLine("Menu Options:");
             Console.WriteLine("1:Create New Goal\n2:List Goals\n3:Save Goals\n4:Load Goals\n5:Record Event\n6:Quit");
             userChoice = int.Parse(Console.ReadLine());
@@ -26,8 +30,8 @@ class Program
                     switch (goalChoice)
                     {
                         case 1:
-                            SimpleGoal simpleGoal = new SimpleGoal("", "", "", 0);
-                            simpleGoal.CreateNewGoal(goals);
+                            SimpleGoal newSimpleGoal = new SimpleGoal("", "", "", 0);
+                            newSimpleGoal.CreateNewGoal(goals);
                             break;
                         case 2:
                             EternalGoal eternalGoal = new EternalGoal("", "", "", 0);
@@ -47,22 +51,42 @@ class Program
                     Goal.ListGoal(goals);
                     break;
                 case 3: //save goals
-                    Goal.SaveGoal(goals);
+                    Goal.SaveGoal(ref totalPoints, goals);
+                    initialLength = goals.Count();
+                    initialPoints = totalPoints;
                     Console.Clear();
                     break;
                 case 4: //load goals
-                    Goal.LoadGoal(goals);
+                    Goal.LoadGoal(ref totalPoints, goals);
                     initialLength = goals.Count();
+                    initialPoints = totalPoints;
                     Console.Clear();
                     break;
                 case 5: //record event
                     Console.Clear();
-                    // Goal.RecordEvent(goals);
+                    Console.WriteLine("What goal did you accomplish?: ");
+                    Goal.ListGoal(goals);
+                    int recordChoice = int.Parse(Console.ReadLine());
+                    Goal selectedGoal = goals[recordChoice - 1];
+
+                    if (selectedGoal is SimpleGoal simpleGoal)
+                    {
+                        simpleGoal.RecordEvent(ref totalPoints, goals);
+                    }
+                    else if (selectedGoal is EternalGoal eternalGoal)
+                    {
+                        eternalGoal.RecordEvent(ref totalPoints, goals);
+                    }
+                    else if (selectedGoal is ChecklistGoal checklistGoal)
+                    {
+                        checklistGoal.RecordEvent(ref totalPoints, goals);
+                    }
                     break;
+
                 case 6: //exit
                     Console.Clear();
                     int finalLength = goals.Count();
-                    if (initialLength != finalLength)
+                    if (initialLength != finalLength || initialPoints != totalPoints)
                     {
                         Console.WriteLine("Would you like to save your changes? (y/n)");
                         string saveChoice = Console.ReadLine();
@@ -70,7 +94,7 @@ class Program
                         switch (saveChoice.ToLower())
                         {
                             case "y":
-                                Goal.SaveGoal(goals);
+                                Goal.SaveGoal(ref totalPoints, goals);
                                 break;
                             case "n":
                                 break;

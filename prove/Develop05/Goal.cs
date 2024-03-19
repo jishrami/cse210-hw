@@ -7,8 +7,6 @@ abstract class Goal
     protected string _goalDescription;
     protected int _points;
 
-    protected int _totalPoints = 0;
-
     public Goal(string goalType, string goalName, string goalDescription, int points)
     {
         _goalType = goalType;
@@ -26,23 +24,30 @@ abstract class Goal
 
         foreach (Goal goal in goals)
         {
-            Console.WriteLine($"[] {goal._goalName}: {goal._goalDescription} - {goal._points} points");
+            if (goal.GetType() == typeof(ChecklistGoal))
+            {
+                Console.WriteLine($"[] {goal._goalName}: {goal._goalDescription} - {goal._points} points - {((ChecklistGoal)goal).BonusPoints} bonus points if completed {((ChecklistGoal)goal).TimesToAccomplish} times");
+            }
+            else
+            {
+                Console.WriteLine($"[] {goal._goalName}: {goal._goalDescription} - {goal._points} points");
+            }
         }
     }
 
-    public static void SaveGoal(List<Goal> goals)
+    public static void SaveGoal(ref int totalPoints, List<Goal> goals)
     {
         Console.WriteLine("What is the name of the file? ");
         string fileName = Console.ReadLine();
         using (StreamWriter outputFile = new StreamWriter($"{fileName}.txt"))
         {
-            outputFile.WriteLine($"totalPoints");
+            outputFile.WriteLine($"totalPoints={totalPoints}");
             foreach (Goal goal in goals)
             {
                 if (goal.GetType() == typeof(ChecklistGoal))
                 {
                     ChecklistGoal checklistGoal = (ChecklistGoal)goal;
-                    outputFile.WriteLine($"{goal._goalType},{goal._goalName},{goal._goalDescription},{goal._points},{checklistGoal.BonusPoints}");
+                    outputFile.WriteLine($"{goal._goalType},{goal._goalName},{goal._goalDescription},{goal._points},{checklistGoal.TimesToAccomplish},{checklistGoal.BonusPoints}");
                 }
                 else
                 {
@@ -53,7 +58,7 @@ abstract class Goal
         }
     }
 
-    public static void LoadGoal(List<Goal> goals)
+    public static void LoadGoal(ref int totalPoints, List<Goal> goals)
     {
         Console.WriteLine("What is the name of the file? ");
         string fileName = Console.ReadLine();
@@ -63,6 +68,11 @@ abstract class Goal
         {
             if (line.StartsWith("totalPoints"))
             {
+                if (totalPoints == 0)
+                {
+                    string[] totals = line.Split('=');
+                    totalPoints = int.Parse(totals[1]);
+                }
                 // Skip the line with totalPoints
                 continue;
             }
@@ -97,5 +107,5 @@ abstract class Goal
         }
     }
 
-    public abstract void RecordEvent(List<Goal> goals);
+    public abstract void RecordEvent(ref int totalPoints, List<Goal> goals);
 }

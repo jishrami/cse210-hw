@@ -18,23 +18,10 @@ class SimpleGoal : Goal
         goals.Add(simpleGoal);
     }
 
-
-
-    public override void RecordEvent(List<Goal> goals)
+    public override void RecordEvent(ref int totalPoints, List<Goal> goals)
     {
-
-    }
-
-    public void IsCompleted()
-    {
-        if (_goalStatus == true)
-        {
-            Console.Write("The goal has been completed.");
-        }
-        else
-        {
-            Console.WriteLine("The goal has not yet been completed.");
-        }
+        totalPoints += _points;
+        Console.WriteLine($"You have completed the event '{_goalName}' and earned {_points} points!");
     }
 
 }

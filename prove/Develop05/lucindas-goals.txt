@@ -1,0 +1,4 @@
+totalPoints
+Simple Goal,Write email,write an email to childrens mental health,1
+Checklist Goal,Pet cat,pet cat multiple times,10,2,500
+Eternal Goal,Read scriptures,read my scriptues every day,250

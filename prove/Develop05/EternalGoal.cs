@@ -1,6 +1,6 @@
 class EternalGoal : Goal
 {
-    public EternalGoal(string type,string name, string description, int points) : base(type, name, description, points)
+    public EternalGoal(string type, string name, string description, int points) : base(type, name, description, points)
     {
 
     }
@@ -17,9 +17,10 @@ class EternalGoal : Goal
         goals.Add(eternalGoal);
     }
 
-    public override void RecordEvent(List<Goal> goals)
+    public override void RecordEvent(ref int totalPoints, List<Goal> goals)
     {
-        
+        totalPoints += _points;
+        Console.WriteLine($"You have completed the event '{_goalName}' and earned {_points} points!");
     }
 
 

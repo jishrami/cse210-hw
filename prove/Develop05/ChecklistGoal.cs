@@ -2,10 +2,11 @@ class ChecklistGoal : Goal
 {
     private bool _goalStatus;
     private int _currentlyAccomplished;
-    private int _timesToAccomplish;
+    protected int _timesToAccomplish;
     private int _bonusPoints;
 
     public int BonusPoints => _bonusPoints; // Protected property to access _bonusPoints
+    public int TimesToAccomplish => _timesToAccomplish;
 
     public ChecklistGoal(string type, string name, string description, int point, int timesToAccomplish, int bonusPoints) : base(type, name, description, point)
     {
@@ -29,8 +30,19 @@ class ChecklistGoal : Goal
         goals.Add(checklistGoal);
     }
 
-    public override void RecordEvent(List<Goal> goals)
+     public override void RecordEvent(ref int totalPoints, List<Goal> goals)
     {
-
+        _currentlyAccomplished++;
+        if (_currentlyAccomplished == _timesToAccomplish)
+        {
+            totalPoints += _points + _bonusPoints;
+            _goalStatus = true;
+            Console.WriteLine($"Congratulations! You have completed the event '{_goalName}' and earned {_points + _bonusPoints} points!");
+        }
+        else
+        {
+            totalPoints += _points;
+            Console.WriteLine($"You have completed an event for the goal '{_goalName}' and earned {_points} points!");
+        }
     }
 }

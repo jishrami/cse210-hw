@@ -53,10 +53,14 @@ public class Order
         return 35;
     }
 
-    public void CreateOrder(Product product, Customer customer)
+    public void AddCustomer(Customer customer)
+    {
+        customers.Add(customer);
+    }
+
+    public void AddProduct(Product product)
     {
         products.Add(product);
-        customers.Add(customer);
     }
 
 }

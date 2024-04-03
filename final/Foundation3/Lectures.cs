@@ -1,16 +1,21 @@
 public class Lectures : Event
 {
-    public string speaker { get; set;}
-    public int capacity { get; set;}
+    public string _speaker { get; set; }
+    public int _capacity { get; set; }
 
-    public Lectures(string title, string description, DateTime date, string time, string address, string speaker, int capacity) : base(title, description, date, time, address)
+    public Lectures(string type, string title, string description, DateTime date, string time, Address address, string speaker, int capacity) : base(type, title, description, date, time, address)
     {
-        this.speaker = speaker;
-        this.capacity = capacity;
+        _speaker = speaker;
+        _capacity = capacity;
     }
 
-    public void CreateEvent(List<Event> events)
+    public override void DisplayFullEvent()
     {
-        events.Add(this);
+        Console.WriteLine($"{_type}: {_title}");
+        Console.WriteLine($"{_description}");
+        Console.WriteLine($"Speaker: {_speaker} | Capacity: {_capacity}");
+        Console.WriteLine($"Date: {_date}");
+        Console.WriteLine($"Time: {_time}");
+        Console.WriteLine($"Address: {_address.GetFullAddress()}");
     }
 }

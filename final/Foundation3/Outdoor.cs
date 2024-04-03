@@ -1,14 +1,19 @@
 public class Outdoor : Event
 {
-    public string weatherForecast { get; set; }
+    public string _weatherForecast { get; set; }
 
-    public Outdoor(string title, string description, DateTime date, string time, string address, string weather) : base(title, description, date, time, address)
+    public Outdoor(string type, string title, string description, DateTime date, string time, Address address, string weather) : base(type, title, description, date, time, address)
     {
-        weatherForecast = weather;
+        _weatherForecast = weather;
     }
 
-    public void CreateEvent(List<Event> events)
+    public override void DisplayFullEvent()
     {
-        events.Add(this);
+        Console.WriteLine($"{_type}: {_title}");
+        Console.WriteLine($"{_description}");
+        Console.WriteLine($"Weather: {_weatherForecast}");
+        Console.WriteLine($"Date: {_date}");
+        Console.WriteLine($"Time: {_time}");
+        Console.WriteLine($"Address: {_address.GetFullAddress()}");
     }
 }

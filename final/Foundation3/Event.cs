@@ -1,38 +1,65 @@
 public class Event
 {
-    public string title { get; set; }
-    public string description { get; set; }
-    public DateTime date { get; set; }
-    public string time { get; set; }
-    public string address { get; set; }
+    public string _type { get; set; }
+    public string _title { get; set; }
+    public string _description { get; set; }
+    public DateTime _date { get; set; }
+    public string _time { get; set; }
+    public Address _address { get; set; }
 
-    List<Event> events = new List<Event>();
-
-    public Event(string title, string description, DateTime date, string time, string address)
+    public Event(string type, string title, string description, DateTime date, string time, Address address)
     {
-        this.title = title;
-        this.description = description;
-        this.date = date;
-        this.time = time;
-        this.address = address;
+        _type = type;
+        _title = title;
+        _description = description;
+        _date = date;
+        _time = time;
+        _address = address;
+    }
+
+    public void StandardDisplay()
+    {
+        Console.WriteLine($"Title: {_title}\nDescription: {_description}\nDate: {_date}\nTime: {_time}\nAddress: {_address.GetFullAddress()}");
+    }
+
+    public string ShortDisplay()
+    {
+        string standard = $"Event: {_type}\nTitle: {_title}\nDate: {_date}";
+        return standard;
+    }
+
+    public virtual void DisplayFullEvent()
+    {
+
     }
 
     public void DisplayEvent()
     {
-        Console.WriteLine("1. Standard\n2. Detailed\n3.Short");
-        int userInput = int.Parse(Console.ReadLine());
-
-        switch (userInput)
+        int userInput = 0;
+        while (userInput != 4)
         {
-            case 1:
-                Console.WriteLine($"Title: {title}\nDescription: {description}\nDate: {date}\nTime: {time}\nAddress: {address}");
-                break;
-            case 2:
-                Console.WriteLine($"Title: {title}\nDescription: {description}\nDate: {date}\nTime: {time}\nAddress: {address}"); //TODO add other class details
-                break;
-            case 3:
-                Console.WriteLine($"Event: {typeof(Event)}\nTitle: {title}\nDate: {date}"); //TODO change typeof to Event type (class name)
-                break;
+            Console.WriteLine($"{_title}");
+            Console.WriteLine($"Choose a viewing format:");
+            Console.WriteLine("1. Standard\n2. Detailed\n3. Short\n4. Quit to next");
+            userInput = int.Parse(Console.ReadLine());
+            switch (userInput)
+            {
+                case 1:
+                    Console.Clear();
+                    StandardDisplay();
+                    break;
+                case 2:
+                    Console.Clear();
+                    DisplayFullEvent();
+                    break;
+                case 3:
+                    Console.Clear();
+                    ShortDisplay();
+                    break;
+                case 4:
+                    Console.Clear();
+                    break;
+            }
         }
 
     }

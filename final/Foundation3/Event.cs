@@ -22,10 +22,9 @@ public class Event
         Console.WriteLine($"Title: {_title}\nDescription: {_description}\nDate: {_date}\nTime: {_time}\nAddress: {_address.GetFullAddress()}");
     }
 
-    public string ShortDisplay()
+    public void ShortDisplay()
     {
-        string standard = $"Event: {_type}\nTitle: {_title}\nDate: {_date}";
-        return standard;
+        Console.WriteLine($"Event: {_type}\nTitle: {_title}\nDate: {_date}");
     }
 
     public virtual void DisplayFullEvent()
@@ -35,31 +34,38 @@ public class Event
 
     public void DisplayEvent()
     {
-        int userInput = 0;
-        while (userInput != 4)
+        string userInput = " ";
+        while (userInput != "4")
         {
-            Console.WriteLine($"{_title}");
+            Console.Clear();
+            Console.WriteLine($"Showing event: {_type} ");
             Console.WriteLine($"Choose a viewing format:");
             Console.WriteLine("1. Standard\n2. Detailed\n3. Short\n4. Quit to next");
-            userInput = int.Parse(Console.ReadLine());
+            userInput = Console.ReadLine();
+            Console.Clear();
             switch (userInput)
             {
-                case 1:
-                    Console.Clear();
+                case "1":
                     StandardDisplay();
-                    break;
-                case 2:
+                    Console.ReadLine();
                     Console.Clear();
+                    break;
+                case "2":
                     DisplayFullEvent();
-                    break;
-                case 3:
+                    Console.Read();
                     Console.Clear();
-                    ShortDisplay();
                     break;
-                case 4:
+                case "3":
+                    ShortDisplay();
+                    Console.Read();
+                    Console.Clear();
+                    break;
+                case "4":
                     Console.Clear();
                     break;
             }
+
+           
         }
 
     }
